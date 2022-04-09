@@ -36,8 +36,8 @@ function Speak()
 
 function Prediction()
 {
-    img = document.getElementById("captured_image")
-    console.log(img, gotResult)
+    img = document.getElementById("captured_image");
+    classifier.classify(img, gotResult);
 }
 
 function gotResult(error, results)
@@ -49,33 +49,33 @@ function gotResult(error, results)
      else
      {
         console.log(results);
-        document.getElementById("emotion-name1").innerHTML = result[0].label;
-        document.getElementById("emotion-name2").innerHTML = result[1].label;
-        Prediction_1 = result[0].label;
-        Prediction_2 = result[1].label;
+        document.getElementById("emotion-name1").innerHTML = results[0].label;
+        document.getElementById("emotion-name2").innerHTML = results[1].label;
+        Prediction_1 = results[0].label;
+        Prediction_2 = results[1].label;
 
-        if (result[0].label=="happy")
+        if (results[0].label=="happy")
         {
            document.getElementById("emoji1").innerHTML = "&#128522";
         }
-        if (result[0].label=="sad")
+        if (results[0].label=="sad")
         {
            document.getElementById("emoji1").innerHTML = "&#128532";
         }
-        if (result[0].label=="angry")
+        if (results[0].label=="angry")
         {
            document.getElementById("emoji1").innerHTML = "&#128545";
         }
 
-        if (result[1].label=="happy")
+        if (results[1].label=="happy")
         {
            document.getElementById("emoj2").innerHTML = "&#128522";
         }
-        if (result[1].label=="sad")
+        if (results[1].label=="sad")
         {
            document.getElementById("emoji2").innerHTML = "&#128532";
         }
-        if (result[1].label=="angry")
+        if (results[1].label=="angry")
         {
            document.getElementById("emoji2").innerHTML = "&#128545";
         }
